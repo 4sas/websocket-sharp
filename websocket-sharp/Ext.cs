@@ -202,21 +202,19 @@ namespace WebSocketSharp
     }
 
     internal static byte[] Compress (
-      this byte[] data, CompressionMethod method
+      this byte[] data,
+      CompressionMethod method
     )
     {
-      return method == CompressionMethod.Deflate
-             ? data.compress ()
-             : data;
+      return method == CompressionMethod.Deflate ? data.compress () : data;
     }
 
     internal static Stream Compress (
-      this Stream stream, CompressionMethod method
+      this Stream stream,
+      CompressionMethod method
     )
     {
-      return method == CompressionMethod.Deflate
-             ? stream.compress ()
-             : stream;
+      return method == CompressionMethod.Deflate ? stream.compress () : stream;
     }
 
     internal static bool Contains (this string value, params char[] anyOf)
@@ -309,7 +307,9 @@ namespace WebSocketSharp
     }
 
     internal static void CopyTo (
-      this Stream sourceStream, Stream destinationStream, int bufferLength
+      this Stream sourceStream,
+      Stream destinationStream,
+      int bufferLength
     )
     {
       var buff = new byte[bufferLength];
@@ -367,16 +367,16 @@ namespace WebSocketSharp
     }
 
     internal static byte[] Decompress (
-      this byte[] data, CompressionMethod method
+      this byte[] data,
+      CompressionMethod method
     )
     {
-      return method == CompressionMethod.Deflate
-             ? data.decompress ()
-             : data;
+      return method == CompressionMethod.Deflate ? data.decompress () : data;
     }
 
     internal static Stream Decompress (
-      this Stream stream, CompressionMethod method
+      this Stream stream,
+      CompressionMethod method
     )
     {
       return method == CompressionMethod.Deflate
@@ -385,7 +385,8 @@ namespace WebSocketSharp
     }
 
     internal static byte[] DecompressToArray (
-      this Stream stream, CompressionMethod method
+      this Stream stream,
+      CompressionMethod method
     )
     {
       return method == CompressionMethod.Deflate
@@ -394,7 +395,9 @@ namespace WebSocketSharp
     }
 
     internal static void Emit (
-      this EventHandler eventHandler, object sender, EventArgs e
+      this EventHandler eventHandler,
+      object sender,
+      EventArgs e
     )
     {
       if (eventHandler == null)
@@ -404,7 +407,9 @@ namespace WebSocketSharp
     }
 
     internal static void Emit<TEventArgs> (
-      this EventHandler<TEventArgs> eventHandler, object sender, TEventArgs e
+      this EventHandler<TEventArgs> eventHandler,
+      object sender,
+      TEventArgs e
     )
       where TEventArgs : EventArgs
     {
@@ -513,7 +518,9 @@ namespace WebSocketSharp
     }
 
     internal static string GetValue (
-      this string nameAndValue, char separator, bool unquote
+      this string nameAndValue,
+      char separator,
+      bool unquote
     )
     {
       var idx = nameAndValue.IndexOf (separator);
@@ -527,7 +534,8 @@ namespace WebSocketSharp
     }
 
     internal static bool IsCompressionExtension (
-      this string value, CompressionMethod method
+      this string value,
+      CompressionMethod method
     )
     {
       var extStr = method.ToExtensionString ();
@@ -898,7 +906,8 @@ namespace WebSocketSharp
     }
 
     internal static IEnumerable<string> SplitHeaderValue (
-      this string value, params char[] separators
+      this string value,
+      params char[] separators
     )
     {
       var len = value.Length;
@@ -910,6 +919,7 @@ namespace WebSocketSharp
 
       for (var i = 0; i <= end; i++) {
         var c = value[i];
+
         buff.Append (c);
 
         if (c == '"') {
@@ -996,7 +1006,8 @@ namespace WebSocketSharp
     }
 
     internal static string ToExtensionString (
-      this CompressionMethod method, params string[] parameters
+      this CompressionMethod method,
+      params string[] parameters
     )
     {
       if (method == CompressionMethod.None)
@@ -1046,7 +1057,8 @@ namespace WebSocketSharp
     }
 
     internal static string ToString (
-      this System.Net.IPAddress address, bool bracketIPv6
+      this System.Net.IPAddress address,
+      bool bracketIPv6
     )
     {
       return bracketIPv6
@@ -1097,7 +1109,8 @@ namespace WebSocketSharp
     }
 
     internal static bool TryCreateVersion (
-      this string versionString, out Version result
+      this string versionString,
+      out Version result
     )
     {
       result = null;
@@ -1113,7 +1126,9 @@ namespace WebSocketSharp
     }
 
     internal static bool TryCreateWebSocketUri (
-      this string uriString, out Uri result, out string message
+      this string uriString,
+      out Uri result,
+      out string message
     )
     {
       result = null;
@@ -1137,7 +1152,7 @@ namespace WebSocketSharp
       var valid = schm == "ws" || schm == "wss";
 
       if (!valid) {
-        message = "The scheme part is not 'ws' or 'wss'.";
+        message = "The scheme part is not \"ws\" or \"wss\".";
 
         return false;
       }
@@ -1176,7 +1191,8 @@ namespace WebSocketSharp
     }
 
     internal static bool TryGetUTF8DecodedString (
-      this byte[] bytes, out string s
+      this byte[] bytes,
+      out string s
     )
     {
       s = null;
@@ -1192,7 +1208,8 @@ namespace WebSocketSharp
     }
 
     internal static bool TryGetUTF8EncodedBytes (
-      this string s, out byte[] bytes
+      this string s,
+      out byte[] bytes
     )
     {
       bytes = null;
@@ -1208,7 +1225,8 @@ namespace WebSocketSharp
     }
 
     internal static bool TryOpenRead (
-      this FileInfo fileInfo, out FileStream fileStream
+      this FileInfo fileInfo,
+      out FileStream fileStream
     )
     {
       fileStream = null;
@@ -1266,7 +1284,9 @@ namespace WebSocketSharp
     }
 
     internal static void WriteBytes (
-      this Stream stream, byte[] bytes, int bufferLength
+      this Stream stream,
+      byte[] bytes,
+      int bufferLength
     )
     {
       using (var src = new MemoryStream (bytes))

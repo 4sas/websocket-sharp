@@ -8,7 +8,7 @@
  * The MIT License
  *
  * Copyright (c) 2004,2009 Novell, Inc. (http://www.novell.com)
- * Copyright (c) 2012-2023 sta.blockhead
+ * Copyright (c) 2012-2024 sta.blockhead
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -479,7 +479,11 @@ namespace WebSocketSharp.Net
           DateTime expires;
 
           var done = DateTime.TryParseExact (
-                       s, fmts, provider, style, out expires
+                       s,
+                       fmts,
+                       provider,
+                       style,
+                       out expires
                      );
 
           if (!done)
@@ -676,11 +680,11 @@ namespace WebSocketSharp.Net
     /// <param name="cookie">
     /// A <see cref="Cookie"/> to add.
     /// </param>
-    /// <exception cref="InvalidOperationException">
-    /// The collection is read-only.
-    /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="cookie"/> is <see langword="null"/>.
+    /// </exception>
+    /// <exception cref="InvalidOperationException">
+    /// The collection is read-only.
     /// </exception>
     public void Add (Cookie cookie)
     {
@@ -702,11 +706,11 @@ namespace WebSocketSharp.Net
     /// <param name="cookies">
     /// A <see cref="CookieCollection"/> that contains the cookies to add.
     /// </param>
-    /// <exception cref="InvalidOperationException">
-    /// The collection is read-only.
-    /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="cookies"/> is <see langword="null"/>.
+    /// </exception>
+    /// <exception cref="InvalidOperationException">
+    /// The collection is read-only.
     /// </exception>
     public void Add (CookieCollection cookies)
     {
@@ -773,15 +777,15 @@ namespace WebSocketSharp.Net
     /// An <see cref="int"/> that specifies the zero-based index in
     /// the array at which copying starts.
     /// </param>
+    /// <exception cref="ArgumentException">
+    /// The space from <paramref name="index"/> to the end of
+    /// <paramref name="array"/> is not enough to copy to.
+    /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="array"/> is <see langword="null"/>.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="index"/> is less than zero.
-    /// </exception>
-    /// <exception cref="ArgumentException">
-    /// The space from <paramref name="index"/> to the end of
-    /// <paramref name="array"/> is not enough to copy to.
     /// </exception>
     public void CopyTo (Cookie[] array, int index)
     {
@@ -830,11 +834,11 @@ namespace WebSocketSharp.Net
     /// <param name="cookie">
     /// A <see cref="Cookie"/> to remove.
     /// </param>
-    /// <exception cref="InvalidOperationException">
-    /// The collection is read-only.
-    /// </exception>
     /// <exception cref="ArgumentNullException">
     /// <paramref name="cookie"/> is <see langword="null"/>.
+    /// </exception>
+    /// <exception cref="InvalidOperationException">
+    /// The collection is read-only.
     /// </exception>
     public bool Remove (Cookie cookie)
     {

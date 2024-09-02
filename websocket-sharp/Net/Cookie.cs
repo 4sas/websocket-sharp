@@ -8,7 +8,7 @@
  * The MIT License
  *
  * Copyright (c) 2004,2009 Novell, Inc. (http://www.novell.com)
- * Copyright (c) 2012-2023 sta.blockhead
+ * Copyright (c) 2012-2024 sta.blockhead
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -143,9 +143,6 @@ namespace WebSocketSharp.Net
     /// <param name="value">
     /// A <see cref="string"/> that specifies the value of the cookie.
     /// </param>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="name"/> is <see langword="null"/>.
-    /// </exception>
     /// <exception cref="ArgumentException">
     ///   <para>
     ///   <paramref name="name"/> is an empty string.
@@ -169,6 +166,9 @@ namespace WebSocketSharp.Net
     ///   <paramref name="value"/> is a string not enclosed in double quotes
     ///   although it contains a reserved character.
     ///   </para>
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="name"/> is <see langword="null"/>.
     /// </exception>
     public Cookie (string name, string value)
       : this (name, value, String.Empty, String.Empty)
@@ -196,9 +196,6 @@ namespace WebSocketSharp.Net
     /// A <see cref="string"/> that specifies the value of the Path
     /// attribute of the cookie.
     /// </param>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="name"/> is <see langword="null"/>.
-    /// </exception>
     /// <exception cref="ArgumentException">
     ///   <para>
     ///   <paramref name="name"/> is an empty string.
@@ -222,6 +219,9 @@ namespace WebSocketSharp.Net
     ///   <paramref name="value"/> is a string not enclosed in double quotes
     ///   although it contains a reserved character.
     ///   </para>
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="name"/> is <see langword="null"/>.
     /// </exception>
     public Cookie (string name, string value, string path)
       : this (name, value, path, String.Empty)
@@ -253,9 +253,6 @@ namespace WebSocketSharp.Net
     /// A <see cref="string"/> that specifies the value of the Domain
     /// attribute of the cookie.
     /// </param>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="name"/> is <see langword="null"/>.
-    /// </exception>
     /// <exception cref="ArgumentException">
     ///   <para>
     ///   <paramref name="name"/> is an empty string.
@@ -279,6 +276,9 @@ namespace WebSocketSharp.Net
     ///   <paramref name="value"/> is a string not enclosed in double quotes
     ///   although it contains a reserved character.
     ///   </para>
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// <paramref name="name"/> is <see langword="null"/>.
     /// </exception>
     public Cookie (string name, string value, string path, string domain)
     {
@@ -544,9 +544,6 @@ namespace WebSocketSharp.Net
     ///   RFC 2616</see>.
     ///   </para>
     /// </value>
-    /// <exception cref="ArgumentNullException">
-    /// The value specified for a set operation is <see langword="null"/>.
-    /// </exception>
     /// <exception cref="ArgumentException">
     ///   <para>
     ///   The value specified for a set operation is an empty string.
@@ -563,6 +560,9 @@ namespace WebSocketSharp.Net
     ///   <para>
     ///   The value specified for a set operation contains an invalid character.
     ///   </para>
+    /// </exception>
+    /// <exception cref="ArgumentNullException">
+    /// The value specified for a set operation is <see langword="null"/>.
     /// </exception>
     public string Name {
       get {
@@ -833,7 +833,8 @@ namespace WebSocketSharp.Net
         var url = _commentUri.OriginalString;
 
         buff.AppendFormat (
-          "; CommentURL={0}", !url.IsToken () ? url.Quote () : url
+          "; CommentURL={0}",
+          !url.IsToken () ? url.Quote () : url
         );
       }
 
@@ -943,7 +944,9 @@ namespace WebSocketSharp.Net
     }
 
     internal static bool TryCreate (
-      string name, string value, out Cookie result
+      string name,
+      string value,
+      out Cookie result
     )
     {
       result = null;
