@@ -8,7 +8,7 @@
  * The MIT License
  *
  * Copyright (c) 2005-2009 Novell, Inc. (http://www.novell.com)
- * Copyright (c) 2012-2023 sta.blockhead
+ * Copyright (c) 2012-2024 sta.blockhead
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -168,6 +168,7 @@ namespace WebSocketSharp.Net
           buff.Append (reference.ToString ());
 
           reference.Length = 0;
+
           reference.Append ('&');
 
           state = 1;
@@ -610,8 +611,7 @@ namespace WebSocketSharp.Net
 
     private static bool isAlphabet (char c)
     {
-      return (c >= 'A' && c <= 'Z')
-             || (c >= 'a' && c <= 'z');
+      return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
     }
 
     private static bool isNumeric (char c)
@@ -747,7 +747,10 @@ namespace WebSocketSharp.Net
     #region Internal Methods
 
     internal static Uri CreateRequestUrl (
-      string requestUri, string host, bool websocketRequest, bool secure
+      string requestUri,
+      string host,
+      bool websocketRequest,
+      bool secure
     )
     {
       if (requestUri == null || requestUri.Length == 0)
@@ -892,7 +895,8 @@ namespace WebSocketSharp.Net
     }
 
     internal static bool TryGetEncoding (
-      string contentType, out Encoding result
+      string contentType,
+      out Encoding result
     )
     {
       result = null;
@@ -1018,7 +1022,10 @@ namespace WebSocketSharp.Net
     }
 
     public static string UrlDecode (
-      byte[] bytes, int offset, int count, Encoding encoding
+      byte[] bytes,
+      int offset,
+      int count,
+      Encoding encoding
     )
     {
       if (bytes == null)
@@ -1057,9 +1064,7 @@ namespace WebSocketSharp.Net
 
       var len = bytes.Length;
 
-      return len > 0
-             ? urlDecodeToBytes (bytes, 0, len)
-             : bytes;
+      return len > 0 ? urlDecodeToBytes (bytes, 0, len) : bytes;
     }
 
     public static byte[] UrlDecodeToBytes (string s)
@@ -1098,9 +1103,7 @@ namespace WebSocketSharp.Net
       if (count < 0 || count > len - offset)
         throw new ArgumentOutOfRangeException ("count");
 
-      return count > 0
-             ? urlDecodeToBytes (bytes, offset, count)
-             : new byte[0];
+      return count > 0 ? urlDecodeToBytes (bytes, offset, count) : new byte[0];
     }
 
     public static string UrlEncode (byte[] bytes)
