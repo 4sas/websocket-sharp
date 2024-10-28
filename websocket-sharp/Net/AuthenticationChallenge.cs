@@ -4,7 +4,7 @@
  *
  * The MIT License
  *
- * Copyright (c) 2013-2023 sta.blockhead
+ * Copyright (c) 2013-2024 sta.blockhead
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,7 +44,8 @@ namespace WebSocketSharp.Net
     #region Private Constructors
 
     private AuthenticationChallenge (
-      AuthenticationSchemes scheme, NameValueCollection parameters
+      AuthenticationSchemes scheme,
+      NameValueCollection parameters
     )
     {
       _scheme = scheme;
@@ -56,7 +57,8 @@ namespace WebSocketSharp.Net
     #region Internal Constructors
 
     internal AuthenticationChallenge (
-      AuthenticationSchemes scheme, string realm
+      AuthenticationSchemes scheme,
+      string realm
     )
       : this (scheme, new NameValueCollection ())
     {
@@ -173,7 +175,8 @@ namespace WebSocketSharp.Net
         var parameters = ParseParameters (chal[1]);
 
         return new AuthenticationChallenge (
-                 AuthenticationSchemes.Basic, parameters
+                 AuthenticationSchemes.Basic,
+                 parameters
                );
       }
 
@@ -181,7 +184,8 @@ namespace WebSocketSharp.Net
         var parameters = ParseParameters (chal[1]);
 
         return new AuthenticationChallenge (
-                 AuthenticationSchemes.Digest, parameters
+                 AuthenticationSchemes.Digest,
+                 parameters
                );
       }
 
